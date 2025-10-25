@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilal - Web Development Masterclass</title>
+    <title>Foodie - Fast Food Delivery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,797 +15,716 @@
         }
 
         :root {
-            --primary: #1a3d7c;
-            --secondary: #d4af37;
-            --accent: #c8102e;
-            --light: #f8f9fa;
-            --dark: #0a1931;
-            --grass: #2e8b57;
-            --field: #3cb371;
+            --primary: #ff4757;
+            --secondary: #ff9f1c;
+            --dark: #2f3542;
+            --light: #f1f2f6;
+            --success: #2ed573;
         }
 
         body {
-            background-color: #f5f7ff;
-            color: var(--dark);
+            background-color: #fff;
+            color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
         /* Header Styles */
-        header {
-            background: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.8)), url('https://images.unsplash.com/photo-1556056504-5c7696c4c28d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .navbar {
+        .header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
 
         .logo {
-            font-size: 32px;
-            font-weight: 900;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
             display: flex;
             align-items: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--secondary);
         }
 
         .logo i {
-            margin-right: 15px;
-            color: var(--secondary);
-            font-size: 36px;
+            margin-right: 8px;
+            font-size: 24px;
         }
 
-        .nav-links {
+        .nav {
             display: flex;
-            list-style: none;
+            gap: 25px;
         }
 
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: white;
+        .nav a {
             text-decoration: none;
+            color: var(--dark);
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
             position: relative;
         }
 
-        .nav-links a:after {
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: var(--secondary);
-            transition: width 0.3s ease;
+            background-color: var(--primary);
+            transition: width 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
-
-        .nav-links a:hover:after {
+        .nav a:hover::after {
             width: 100%;
         }
 
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
         .btn {
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-
-        .btn-outline:hover {
-            background: var(--secondary);
-            color: var(--dark);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-primary {
-            background: var(--accent);
+            background: var(--primary);
             color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-primary:hover {
-            background: #a50d26;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(200, 16, 46, 0.3);
+        .btn:hover {
+            background: #ff3742;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: #ff8c00;
+            box-shadow: 0 5px 15px rgba(255, 159, 28, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            padding: 150px 0;
-            background: linear-gradient(rgba(10, 25, 49, 0.85), rgba(10, 25, 49, 0.8)), url('https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 100px 20px;
+            margin-bottom: 50px;
         }
 
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/football-no-lines.png');
-            opacity: 0.1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
+        .hero-content h2 {
+            font-size: 3rem;
             margin-bottom: 20px;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: #e0e0e0;
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .btn-large {
-            padding: 18px 40px;
-            font-size: 1.1rem;
-        }
-
-        .btn-gold {
-            background: var(--secondary);
-            color: var(--dark);
-            font-weight: 800;
-        }
-
-        .btn-gold:hover {
-            background: #e6c34f;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background-color: white;
-            position: relative;
-        }
-
-        .features:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        /* Categories */
+        .categories {
+            margin: 60px auto;
+            text-align: center;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.8rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-title p {
-            color: var(--dark);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            text-align: center;
-            border-top: 5px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
             font-size: 2.2rem;
-            box-shadow: 0 8px 20px rgba(26, 61, 124, 0.3);
+            margin-bottom: 40px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
         }
 
-        .feature-card h3 {
-            margin-bottom: 20px;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cat {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+        }
+
+        .cat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .cat i {
+            font-size: 30px;
+            margin-bottom: 10px;
             color: var(--primary);
-            font-size: 1.5rem;
         }
 
-        .feature-card p {
-            color: #555;
-            line-height: 1.7;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 100px 0;
-            background: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.9)), url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
+        /* Menu Section */
+        .menu {
+            margin: 60px auto;
             text-align: center;
         }
 
-        .stats-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .stat-item {
-            padding: 30px 20px;
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Courses Section */
-        .courses {
-            padding: 100px 0;
-            background-color: #f8f9fa;
-        }
-
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .course-card {
+        .card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-        }
-
-        .course-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .course-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
-            overflow: hidden;
         }
 
-        .course-image:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
             width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/black-linen.png');
-            opacity: 0.2;
+            height: 200px;
+            object-fit: cover;
         }
 
-        .course-content {
-            padding: 30px;
+        .card-content {
+            padding: 20px;
+            text-align: left;
         }
 
-        .course-content h3 {
-            font-size: 1.5rem;
+        .card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .card p {
+            color: #666;
             margin-bottom: 15px;
-            color: var(--primary);
+            font-size: 0.95rem;
         }
 
-        .course-content p {
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .course-meta {
+        .card-footer {
             display: flex;
             justify-content: space-between;
-            color: #777;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .rating {
+            color: var(--secondary);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--success);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
 
         /* CTA Section */
         .cta {
-            padding: 120px 0;
-            background: linear-gradient(rgba(26, 61, 124, 0.9), rgba(26, 61, 124, 0.9)), url('https://images.unsplash.com/photo-1552667466-07770ae110d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             text-align: center;
-            position: relative;
+            padding: 70px 20px;
+            margin: 80px 0;
+            border-radius: 15px;
         }
 
-        .cta:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/football-no-lines.png');
-            opacity: 0.1;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta h2 {
-            font-size: 3rem;
+        .cta h3 {
+            font-size: 2.2rem;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .cta p {
-            color: #e0e0e0;
-            margin-bottom: 40px;
-            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            margin: 80px auto;
+            text-align: center;
+        }
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .review {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .review:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .review img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .review p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .review h4 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .review .stars {
+            color: var(--secondary);
+            margin-bottom: 10px;
         }
 
         /* Footer */
-        footer {
+        .footer {
             background: var(--dark);
             color: white;
-            padding: 80px 0 20px;
+            padding: 50px 0 20px;
         }
 
-        .footer-content {
+        .footer .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .footer-column h3 {
-            margin-bottom: 25px;
-            color: var(--secondary);
-            font-size: 1.5rem;
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .footer-links {
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col ul {
             list-style: none;
         }
 
-        .footer-links li {
-            margin-bottom: 12px;
+        .footer-col ul li {
+            margin-bottom: 10px;
         }
 
-        .footer-links a {
-            color: #adb5bd;
+        .footer-col ul li a {
+            color: #ddd;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
-        .footer-links a:hover {
-            color: var(--secondary);
+        .footer-col ul li a:hover {
+            color: var(--primary);
             padding-left: 5px;
         }
 
-        .social-links {
+        .footer-col .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
+        .footer-col .social-links a {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             color: white;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
+            transition: all 0.3s;
         }
 
-        .social-links a:hover {
-            background: var(--secondary);
-            color: var(--dark);
-            transform: translateY(-5px);
+        .footer-col .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #adb5bd;
             font-size: 0.9rem;
+            color: #aaa;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-        }
-
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-buttons {
+            .header .container {
                 flex-direction: column;
-                align-items: center;
                 gap: 15px;
             }
             
-            .btn-large {
-                width: 100%;
-                max-width: 300px;
+            .nav {
+                gap: 15px;
             }
             
-            .section-title h2 {
+            .hero-content h2 {
                 font-size: 2.2rem;
             }
-        }
-
-        /* Animation for elements */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            
+            .cat {
+                width: 130px;
+                padding: 15px 20px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .section-title {
+                font-size: 1.8rem;
             }
         }
 
-        .animate {
-            animation: fadeInUp 0.8s ease forwards;
+        @media (max-width: 480px) {
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 70px 20px;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .category-list {
+                gap: 10px;
+            }
+            
+            .cat {
+                width: 110px;
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .cat i {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- HEADER -->
+    <header class="header">
         <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <i class="fas fa-futbol"></i>
-                    BILAL
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Curriculum</a></li>
-                    <li><a href="#">Mentors</a></li>
-                    <li><a href="#">Success Stories</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <div class="auth-buttons">
-                    <button class="btn btn-outline">Login</button>
-                    <button class="btn btn-primary">Join Now</button>
-                </div>
+            <h1 class="logo"><i class="fas fa-utensils"></i>Foodie<span>.</span></h1>
+            <nav class="nav">
+                <a href="#">Home</a>
+                <a href="#">Menu</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
             </nav>
+            <a href="#" class="btn">Order Now</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero">
-        <div class="container">
-            <h1>Web Development Masterclass</h1>
-            <p>Train like a champion and master web development with our intensive, project-based curriculum. Score your dream tech career with Bilal's proven training methodology.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-gold btn-large">Start Training Now</button>
-                <button class="btn btn-outline btn-large">View Curriculum</button>
+        <div class="hero-content">
+            <h2>Your favorite food, delivered in minutes</h2>
+            <p>Order now and enjoy fast, fresh delivery straight to your door. From local favorites to popular chains, we've got you covered.</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories container">
+        <h3 class="section-title">Popular Categories</h3>
+        <div class="category-list">
+            <div class="cat">
+                <i class="fas fa-pizza-slice"></i>
+                <span>Pizza</span>
+            </div>
+            <div class="cat">
+                <i class="fas fa-hamburger"></i>
+                <span>Burgers</span>
+            </div>
+            <div class="cat">
+                <i class="fas fa-fish"></i>
+                <span>Sushi</span>
+            </div>
+            <div class="cat">
+                <i class="fas fa-leaf"></i>
+                <span>Salads</span>
+            </div>
+            <div class="cat">
+                <i class="fas fa-drumstick-bite"></i>
+                <span>Chicken</span>
+            </div>
+            <div class="cat">
+                <i class="fas fa-ice-cream"></i>
+                <span>Desserts</span>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Champion Training Program</h2>
-                <p>Our curriculum is designed to transform beginners into job-ready web developers through intensive, practical training.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>Elite Curriculum</h3>
-                    <p>Learn the most in-demand technologies and frameworks used by top tech companies worldwide.</p>
-                </div>
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Team Projects</h3>
-                    <p>Collaborate on real-world projects with fellow students, simulating professional development environments.</p>
-                </div>
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Career Coaching</h3>
-                    <p>Get personalized guidance on portfolio building, interview preparation, and job search strategies.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Winning Record</h2>
-                <p>Join thousands of students who have transformed their careers with Bilal's Web Development Masterclass.</p>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label">Job Placement</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">2,500+</div>
-                    <div class="stat-label">Graduates</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">4.9/5</div>
-                    <div class="stat-label">Student Rating</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Weeks Program</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Courses Section -->
-    <section class="courses">
-        <div class="container">
-            <div class="section-title">
-                <h2>Training Modules</h2>
-                <p>Our comprehensive curriculum covers everything from fundamentals to advanced concepts.</p>
-            </div>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <div class="course-image"></div>
-                    <div class="course-content">
-                        <h3>Frontend Fundamentals</h3>
-                        <p>Master HTML5, CSS3, and JavaScript to create stunning, responsive websites.</p>
-                        <div class="course-meta">
-                            <span><i class="far fa-clock"></i> 4 Weeks</span>
-                            <span><i class="fas fa-signal"></i> Beginner</span>
+    <!-- FEATURED FOODS -->
+    <section class="menu container">
+        <h3 class="section-title">Featured Dishes</h3>
+        <div class="grid">
+            <div class="card">
+                <div class="badge">Popular</div>
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Mediterranean Bowl">
+                <div class="card-content">
+                    <h4>Mediterranean Bowl</h4>
+                    <p>Fresh quinoa with roasted vegetables, feta cheese, olives, and lemon herb dressing.</p>
+                    <div class="card-footer">
+                        <div class="price">$12.99</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
                         </div>
-                        <button class="btn btn-primary">Start Module</button>
                     </div>
                 </div>
-                <div class="course-card">
-                    <div class="course-image"></div>
-                    <div class="course-content">
-                        <h3>React Development</h3>
-                        <p>Build dynamic user interfaces with the most popular frontend library.</p>
-                        <div class="course-meta">
-                            <span><i class="far fa-clock"></i> 5 Weeks</span>
-                            <span><i class="fas fa-signal"></i> Intermediate</span>
+            </div>
+            <div class="card">
+                <div class="badge">Chef's Choice</div>
+                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Pasta Carbonara">
+                <div class="card-content">
+                    <h4>Pasta Carbonara</h4>
+                    <p>Creamy pasta with pancetta, parmesan cheese, eggs, and black pepper.</p>
+                    <div class="card-footer">
+                        <div class="price">$14.49</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
                         </div>
-                        <button class="btn btn-primary">Start Module</button>
                     </div>
                 </div>
-                <div class="course-card">
-                    <div class="course-image"></div>
-                    <div class="course-content">
-                        <h3>Full Stack Mastery</h3>
-                        <p>Develop complete web applications with frontend and backend integration.</p>
-                        <div class="course-meta">
-                            <span><i class="far fa-clock"></i> 6 Weeks</span>
-                            <span><i class="fas fa-signal"></i> Advanced</span>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Double Cheeseburger">
+                <div class="card-content">
+                    <h4>Double Cheeseburger</h4>
+                    <p>Two juicy beef patties with cheese, lettuce, tomato, pickles, and special sauce.</p>
+                    <div class="card-footer">
+                        <div class="price">$11.99</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <button class="btn btn-primary">Start Module</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="BBQ Chicken Pizza">
+                <div class="card-content">
+                    <h4>BBQ Chicken Pizza</h4>
+                    <p>Thin crust pizza with BBQ sauce, grilled chicken, red onions, and cilantro.</p>
+                    <div class="card-footer">
+                        <div class="price">$16.99</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- APP DOWNLOAD CTA -->
     <section class="cta">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Score Your Dream Career?</h2>
-                <p>Join Bilal's Web Development Masterclass today and start your journey to becoming a professional developer.</p>
-                <button class="btn btn-gold btn-large">Enroll Now</button>
+            <h3>Ready to Order? Download the App & Unlock Crazy Offers!</h3>
+            <p>Get exclusive discounts, track your order in real-time, and enjoy faster checkout with our mobile app.</p>
+            <a href="#" class="btn btn-secondary">Get the App</a>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials container">
+        <h3 class="section-title">What Our Food Lovers Say</h3>
+        <div class="reviews">
+            <div class="review">
+                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Sarah J.">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Amazing service! My food arrived hot and fresh in just 25 minutes. Will definitely order again!"</p>
+                <h4>Sarah J.</h4>
+            </div>
+            <div class="review">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Daniel K.">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>"The food tastes just like at the restaurant! Perfect packaging and the delivery was super fast."</p>
+                <h4>Daniel K.</h4>
+            </div>
+            <div class="review">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Mr. Adams">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"Love using the app. Great discounts and the loyalty program is fantastic. Highly recommended!"</p>
+                <h4>Mr. Adams</h4>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>BILAL</h3>
-                    <p>Transforming careers through intensive, project-based web development training.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Curriculum</a></li>
-                        <li><a href="#">Mentors</a></li>
-                        <li><a href="#">Success Stories</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Free Tutorials</a></li>
-                        <li><a href="#">Coding Challenges</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Code City</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-CODE</li>
-                        <li><i class="fas fa-envelope"></i> hello@bilaldev.com</li>
-                    </ul>
+            <div class="footer-col">
+                <h4>Foodie</h4>
+                <p>Delivering happiness to your doorstep. Order your favorite meals from the best restaurants in town.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Bilal Web Development Masterclass. All rights reserved.</p>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Food Street, City</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                    <li><i class="fas fa-envelope"></i> hello@foodie.com</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                <form>
+                    <input type="email" placeholder="Your email" style="padding: 10px; width: 100%; margin: 10px 0; border-radius: 5px; border: none;">
+                    <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                </form>
             </div>
         </div>
+        <div class="copyright">
+            <p>© 2023 Foodie. All rights reserved.</p>
+        </div>
     </footer>
-
-    <script>
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-
-            // Button hover effects
-            document.querySelectorAll('.btn').forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px)';
-                });
-                
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        });
-    </script>
 </body>
 </html>
